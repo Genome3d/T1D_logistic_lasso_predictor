@@ -1,0 +1,52 @@
+# create a genotype table
+#
+# Assume GWAS_catalog_2018_and_Denis_sig_WTCCCT1D is the plink genotype data 
+# GWAS_catalog_2018_and_Denis_sig_WTCCCT1D is in plink bed format with three files (bed,fam,bin)
+# It needs to be converted to a text table format (.raw)
+
+plink -bfile GWAS_catalog_2018_and_Denis_sig_WTCCCT1D --recode A  --out  GWAS_catalog_2018_and_Denis_sig_WTCCCT1D
+
+
+
+--------------------------------------------------------------------------------------
+# python program for creating the Tissue specific eQTL expression table for new corrected Denis_total_SNPs_sig_eQTL_effects 
+#
+#Denis_total_SNPs_significant_eqtls02042019_sorted.txt is a mapping table of tissue specific eQTL-effects. It has four columns (Tissue, SNP, Gene_Name, Effect_Size)
+#Denis_total_SNPs_significant_eqtls02042019_sorted.txt is created from the significant tissue specific SNP-gene eQTL data from CodEs3D
+
+
+
+import numpy as np
+import pandas as pd
+
+TSG_list = pd.read_table('data/Denis_total_SNPs_significant_eqtls02042019_sorted.txt')
+eQTL_table = pd.read_table('Denis_total_Gwas_cat_Denis_20117_all_combined.raw',sep = " ")
+
+tmp_eQTL_table = eQTL_table.copy()
+samples_header = list (eQTL_table.columns[0:6])
+SNP_w_list = list(eQTL_table.columns[6:])
+tmp_SNP_w_list = SNP_w_list.copy()
+TSG_cols = []
+drop_SNPs = []
+
+for rsSNP_w in tmp_SNP_w_list :
+	rsSNP = rsSNP_w.split('_')[0]
+	tmp_TSGs = list ( TSG_list.Tissue[TSG_list.SNP == rsSNP] + "--" + rsSNP_w + "--" + TSG_list.Gene_Name[TSG_list.SNP == rsSNP])
+	tmp_Effects = list ( TSG_list.Effect_Size[TSG_list.SNP == rsSNP])
+	if len(tmp_Effects) != 0 :
+		count = 0
+		for TSG in tmp_TSGs:
+			tmp_eQTL_table[TSG] = tmp_eQTL_table[rsSNP_w] * tmp_Effects[count]
+			count = count + 1
+			TSG_cols.append(TSG)
+		drop_SNPs.append(rsSNP_w)
+
+for rsSNP_w in drop_SNPs:
+	SNP_w_list.remove(rsSNP_w)
+	
+TSG_col_sorted = sorted(TSG_cols)
+new_eQTL_table = tmp_eQTL_table[samples_header + TSG_col_sorted + SNP_w_list]
+new_eQTL_table.to_csv('Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019.txt', sep='\t', index=False)
+
+
+--------------------------------------------------------------------------------------
