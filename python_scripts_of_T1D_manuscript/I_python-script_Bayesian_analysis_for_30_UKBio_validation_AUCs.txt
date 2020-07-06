@@ -1,0 +1,41 @@
+# Bayesian analysis for 30 UKBio bank validation dataset AUCs
+
+from scipy import stats
+import arviz as az
+import numpy as np
+import matplotlib.pyplot as plt
+import pymc3 as pm
+import seaborn as sns
+import pandas as pd
+from theano import shared
+from sklearn import preprocessing
+
+data = pd.read_csv('data/30_UKBio_Controls_AUCs.txt')
+
+az.plot_kde(data['UKBIO T1D AUC'].values, rug=True)
+plt.yticks([0], alpha=0);
+
+
+
+with pm.Model() as model_g:
+    μ = pm.Uniform('μ', lower=0, upper=1)
+    σ = pm.HalfNormal('σ', sd=0.01 )
+    y = pm.Normal('y', mu=μ, sd=σ, observed=data['UKBIO T1D AUC'].values)
+    trace_g = pm.sample(1000, tune=1000)
+
+
+
+
+
+
+
+az.plot_trace(trace_g);
+
+az.summary(trace_g,credible_interval=0.95);
+>>> az.summary(trace_g,credible_interval=0.95)
+    mean     sd  hpd_2.5%  hpd_97.5%  mcse_mean  mcse_sd  ess_mean  ess_sd  ess_bulk  ess_tail  r_hat
+μ  0.754  0.002     0.749      0.758        0.0      0.0    2949.0  2949.0    2959.0    2480.0    1.0
+σ  0.011  0.002     0.009      0.014        0.0      0.0    2548.0  2484.0    2616.0    2432.0    1.0
+
+
+az.plot_posterior(trace_g,credible_interval=0.95);
