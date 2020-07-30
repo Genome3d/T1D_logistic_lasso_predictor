@@ -1,0 +1,49 @@
+# To fix a error of a gene name (36951 --> MARCH1).
+# go to /data to create the new data files by the below two command lines
+
+
+cat std80_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019.txt | sed 's/rs2069762_C--36951/rs2069762_C--MARCH1/g' > std80_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019_MARCH1.txt
+cat Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019.txt | sed 's/rs2069762_C--36951/rs2069762_C--MARCH1/g' > std_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019_MARCH1.txt
+
+#--------------------------------------------------------------------------------
+
+# Run the following line by python to create finalized_lgl1c1max500ran1T1D_model_2042.sav
+
+
+import numpy as np
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import roc_curve, auc, roc_auc_score
+from sklearn import linear_model
+import pandas as pd
+from sklearn.model_selection import GridSearchCV
+from tsfresh import extract_features, select_features
+from  tsfresh.feature_selection.relevance import calculate_relevance_table
+
+
+# Normal L1 regression 
+
+
+eQTL_table80 = pd.read_table('std80_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019_MARCH1.txt')
+x_features = eQTL_table80[eQTL_table80.columns[6:]]
+y_phenotype = eQTL_table80['PHENOTYPE'] - 1
+X_selected0_1 = select_features(x_features, y_phenotype,test_for_binary_target_real_feature='mann', test_for_real_target_binary_feature='mann', fdr_level=0.2 )
+
+eQTL_table100 = pd.read_table('std_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019_MARCH1.txt')
+x_table100 = eQTL_table100[X_selected0_1.columns]
+
+y_table100 = eQTL_table100['PHENOTYPE'] - 1
+
+X = x_table100
+Y = y_table100
+
+parameters = {'C':[1],'max_iter':[500], 'l1_ratio':[1]}
+lg_clf = LogisticRegression(random_state=1, solver='saga',n_jobs=-1, penalty='elasticnet' )
+grid_clf = GridSearchCV(lg_clf, parameters, scoring='roc_auc', n_jobs=-1,iid=False, cv=10)
+
+grid_clf.fit(X,Y)
+lg_clf_best_grid = grid_clf.best_estimator_
+
+import pickle
+filename = 'finalized_lgl1c1max500ran1T1D_model_2042.sav'
+pickle.dump(lg_clf_best_grid, open(filename, 'wb'))
+
