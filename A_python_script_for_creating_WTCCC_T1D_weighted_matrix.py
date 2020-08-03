@@ -4,11 +4,11 @@
 # GWAS_catalog_2018_and_Denis_sig_WTCCCT1D is in plink bed format with three files (bed,fam,bin)
 # It needs to be converted to a text table format (.raw)
 
-plink -bfile GWAS_catalog_2018_and_Denis_sig_WTCCCT1D --recode A  --out  GWAS_catalog_2018_and_Denis_sig_WTCCCT1D
+#plink -bfile GWAS_catalog_2018_and_Denis_sig_WTCCCT1D --recode A  --out  GWAS_catalog_2018_and_Denis_sig_WTCCCT1D
 
 
 
---------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 # python program for creating the Tissue specific eQTL expression table for new corrected Denis_total_SNPs_sig_eQTL_effects 
 #
 #Denis_total_SNPs_significant_eqtls02042019_sorted.txt is a mapping table of tissue specific eQTL-effects. It has four columns (Tissue, SNP, Gene_Name, Effect_Size)
@@ -49,4 +49,4 @@ new_eQTL_table = tmp_eQTL_table[samples_header + TSG_col_sorted + SNP_w_list]
 new_eQTL_table.to_csv('Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019.txt', sep='\t', index=False)
 
 
---------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
