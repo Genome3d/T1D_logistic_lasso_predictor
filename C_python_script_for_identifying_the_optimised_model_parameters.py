@@ -1,5 +1,5 @@
 
-# To apply mann whitney u test from tsfresh to filter out data features > FDR 0.2
+# To apply mann whitney u test from tsfresh to filter out data features > FDR 0.2 on the 80% individual tissue specific eQTL effect table (the Supplementary table 5)
 # Use GridSearchCV to search the optimized hyperparameter for the T1D logistic predictor model
 
 import numpy as np
@@ -27,7 +27,7 @@ selected_std_full = eQTL_table[full_columns]
 
 
 eQTL_table80 = selected_std_full
-temp20 = pd.read_table('data/std20_eQTL_table02042019_selected_by_Fdr0.2_mann_onTrain.txt')
+temp20 = pd.read_table('data/std20_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019.txt')
 
 eQTL_table20 = temp20[full_columns]
 
@@ -80,6 +80,7 @@ X_header = np.array(X.columns)
 best_clf =  grid_clf.best_estimator_
 data_array = np.vstack((X_header,best_clf.coef_[0,:]))
 model_weights = pd.DataFrame(data=data_array.T,columns=['Data_feature', 'Weight'])
-model_weights.to_csv('sk_grid_lg_0.2_onTrain_saga_elnet2_20092019weights.txt', sep='\t',index=False,line_terminator='\n')
+model_weights.to_csv('data/sk_grid_lg_0.2_onTrain_saga_elnet2_20092019weights.txt', sep='\t',index=False,line_terminator='\n')
+#std80_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019.txt contains the results of the best predictor model from sklearn grid search algorithm
 
 
