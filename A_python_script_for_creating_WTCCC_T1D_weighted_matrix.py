@@ -20,7 +20,7 @@ import numpy as np
 import pandas as pd
 
 TSG_list = pd.read_table('data/Denis_total_SNPs_significant_eqtls02042019_sorted.txt')
-eQTL_table = pd.read_table('Denis_total_Gwas_cat_Denis_20117_all_combined.raw',sep = " ")
+eQTL_table = pd.read_table('individual_genotype_table.raw',sep = " ")
 
 tmp_eQTL_table = eQTL_table.copy()
 samples_header = list (eQTL_table.columns[0:6])
@@ -46,7 +46,7 @@ for rsSNP_w in drop_SNPs:
 	
 TSG_col_sorted = sorted(TSG_cols)
 new_eQTL_table = tmp_eQTL_table[samples_header + TSG_col_sorted + SNP_w_list]
-new_eQTL_table.to_csv('Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019.txt', sep='\t', index=False)
+new_eQTL_table.to_csv('data/Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019.txt', sep='\t', index=False)
 
 
 #--------------------------------------------------------------------------------------

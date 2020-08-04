@@ -21,5 +21,5 @@ std_table80 = T1D_eQTL_table2.head(3914)
 # Choose the last 979 (out of 4893) examples for validation.
 std_table20 = T1D_eQTL_table2.tail(979)
 
-std_table80.to_csv('std80_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019.txt', sep='\t', index=False)
-std_table20.to_csv('std20_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019.txt', sep='\t', index=False)
+std_table80.to_csv('data/std80_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019.txt', sep='\t', index=False)
+std_table20.to_csv('data/std20_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019.txt', sep='\t', index=False)
