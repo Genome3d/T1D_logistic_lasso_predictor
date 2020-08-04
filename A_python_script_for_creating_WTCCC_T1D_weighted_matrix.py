@@ -11,15 +11,13 @@
 #--------------------------------------------------------------------------------------
 # python program for creating the Tissue specific eQTL expression table for new corrected Denis_total_SNPs_sig_eQTL_effects 
 #
-#Denis_total_SNPs_significant_eqtls02042019_sorted.txt is a mapping table of tissue specific eQTL-effects. It has four columns (Tissue, SNP, Gene_Name, Effect_Size)
-#Denis_total_SNPs_significant_eqtls02042019_sorted.txt is created from the significant tissue specific SNP-gene eQTL data from CodEs3D
-
-
 
 import numpy as np
 import pandas as pd
 
-#Denis_total_SNPs_significant_eqtls02042019_sorted.txt is a mapping file created from the Supplementary File 4 of the T1D manuscript
+#Denis_total_SNPs_significant_eqtls02042019_sorted.txt is a mapping file created from the Supplementary Table 4 of the T1D manuscript
+#Denis_total_SNPs_significant_eqtls02042019_sorted.txt is a mapping table of tissue specific eQTL-effects. It has four columns (Tissue, SNP, Gene_Name, Effect_Size)
+#Denis_total_SNPs_significant_eqtls02042019_sorted.txt is created from the significant tissue specific SNP-gene eQTL data from CodEs3D
 TSG_list = pd.read_table('data/Denis_total_SNPs_significant_eqtls02042019_sorted.txt')
 
 #individual_genotype_table.raw is created from your plink bed genotype data (README.md)
@@ -50,7 +48,7 @@ for rsSNP_w in drop_SNPs:
 TSG_col_sorted = sorted(TSG_cols)
 new_eQTL_table = tmp_eQTL_table[samples_header + TSG_col_sorted + SNP_w_list]
 new_eQTL_table.to_csv('data/Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019.txt', sep='\t', index=False)
-# Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019.txt is the individual tissue specific eQTL effect table (referring to the Supplementary File 5 of the T1D manuscript)
+# Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019.txt is the individual tissue specific eQTL effect table (referring to the Supplementary Table 5 of the T1D manuscript)
 
 
 #--------------------------------------------------------------------------------------
