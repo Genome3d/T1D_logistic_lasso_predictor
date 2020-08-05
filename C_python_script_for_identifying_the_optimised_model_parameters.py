@@ -15,7 +15,7 @@ from sklearn import linear_model
 
 from sklearn.model_selection import GridSearchCV
 
-eQTL_table = pd.read_table('data/std80_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019.txt')
+eQTL_table = pd.read_table('data/std80_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019_v2.txt')
 x_features = eQTL_table[eQTL_table.columns[6:]]
 y_phenotype = eQTL_table['PHENOTYPE'] - 1
 
@@ -27,7 +27,7 @@ selected_std_full = eQTL_table[full_columns]
 
 
 eQTL_table80 = selected_std_full
-temp20 = pd.read_table('data/std20_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019.txt')
+temp20 = pd.read_table('data/std20_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019_v2.txt')
 
 eQTL_table20 = temp20[full_columns]
 
