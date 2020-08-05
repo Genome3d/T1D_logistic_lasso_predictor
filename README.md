@@ -1,5 +1,5 @@
 # T1D_logistic_lasso_regression_model
-Type 1 diabetes logistic lasso regression predictor model
+Type 1 diabetes (T1D) logistic lasso regression predictor model
 
 Python 3.7.3
 tsfresh                   0.12.0
