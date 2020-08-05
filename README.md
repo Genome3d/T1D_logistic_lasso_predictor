@@ -20,4 +20,4 @@ plink -bfile your_genotype_bed_file --recode A  --out individual_genotype_table
 
 After running this command, individual_genotype_table.raw is created and be placed in data/. Due to the data sharing agreements, we could not provide any indiviual genotype data from Wellcome Trust Case and Control Consortium and UK Biobank. Nevertheless, you can go to https://www.wtccc.org.uk/ and https://www.ukbiobank.ac.uk/ for applying their genotype data. 
 
-P.S.: Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019_v2.txt is the Suppliementary Table 5 in the T1D manuscript.
+P.S.: Weighted_eQTL_matrix.txt is the Suppliementary Table 5 in the T1D manuscript.
