@@ -51,5 +51,4 @@ results.to_csv("30_UKBio_Controls_AUCs.txt", sep='\t', index=False)
 
 
 
-results = pd.read_csv("30_UKBio_Controls_AUCs.txt", sep='\t')
 
