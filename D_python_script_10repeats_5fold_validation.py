@@ -19,7 +19,7 @@ from sklearn.model_selection import RepeatedKFold
 
 from sklearn.model_selection import GridSearchCV
 
-eQTL_table = pd.read_table('data/Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019.txt')
+eQTL_table = pd.read_table('data/Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019_v2.txt')
 
 Y_pd = eQTL_table['PHENOTYPE'] - 1
 
