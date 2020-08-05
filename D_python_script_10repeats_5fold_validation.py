@@ -80,13 +80,14 @@ y_pred = clf.predict_proba(X_sel)[:,1]
 # This in-sample AUC should be better than your the AUCs from your repeated cross-validation
 auc = roc_auc_score(Y, y_pred)
 
+#AUC results from the 50 predictors saved in .npy format
 np.save("data/AUC_results_distribution_c1max500l1m0.2_5fold.npy", AUC_result)
 AUC_std= st.stdev(AUC_result)
 AUC_mean= st.mean(AUC_result)
 
 num_coef = np.sum(clf.coef_[0,:] != 0)
 
-
+#Performance results from the grid search algorithm
 f= open("data/Man0.2_onTrianBest_fullmax500_5foldx10_14112019.txt","w+")
 
 f.write('Man0.2_onTrianBest_fullmax500_fold5x10_14112019\n')
