@@ -19,4 +19,4 @@ After this command, individual_genotype_table.raw is created and be placed in da
 
 Or you can start with skipping A_python_script_for_creating_WTCCC_T1D_weighted_matrix.py and running B_python_script_split_std_80-20_WTCCC_T1D_weight_matrix.py using default files at data/.
 
-P.S.: Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019 is the Suppliementary table 5 in the T1D manuscript.
+P.S.: Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019 is the Suppliementary Table 5 in the T1D manuscript.
