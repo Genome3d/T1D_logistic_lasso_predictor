@@ -15,7 +15,7 @@ from sklearn import linear_model
 
 from sklearn.model_selection import GridSearchCV
 
-eQTL_table = pd.read_table('data/std80_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019_v2.txt')
+eQTL_table = pd.read_table('data/std80_Weighted_eQTL_matrix.txt')
 x_features = eQTL_table[eQTL_table.columns[6:]]
 y_phenotype = eQTL_table['PHENOTYPE'] - 1
 
@@ -27,7 +27,7 @@ selected_std_full = eQTL_table[full_columns]
 
 
 eQTL_table80 = selected_std_full
-temp20 = pd.read_table('data/std20_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019_v2.txt')
+temp20 = pd.read_table('data/std20_Weighted_eQTL_matrix.txt')
 
 eQTL_table20 = temp20[full_columns]
 
@@ -81,6 +81,6 @@ best_clf =  grid_clf.best_estimator_
 data_array = np.vstack((X_header,best_clf.coef_[0,:]))
 model_weights = pd.DataFrame(data=data_array.T,columns=['Data_feature', 'Weight'])
 model_weights.to_csv('data/sk_grid_lg_0.2_onTrain_saga_elnet2_20092019weights.txt', sep='\t',index=False,line_terminator='\n')
-#std80_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019.txt contains the results of the best predictor model from sklearn grid search algorithm
+#sk_grid_lg_0.2_onTrain_saga_elnet2_20092019weights.txt contains the results of the best predictor model from sklearn grid search algorithm
 
 
