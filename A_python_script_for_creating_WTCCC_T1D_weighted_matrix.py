@@ -1,10 +1,10 @@
 # create a genotype table
 #
-# Assume GWAS_catalog_2018_and_Denis_sig_WTCCCT1D is the plink genotype data 
-# GWAS_catalog_2018_and_Denis_sig_WTCCCT1D is in plink bed format with three files (bed,fam,bin)
+# Assume your_genotype_bed_file is your plink genotype data 
+# your_genotype_bed_file is in plink bed format with three files (bed,fam,bin)
 # It needs to be converted to a text table format (.raw)
 
-#plink -bfile GWAS_catalog_2018_and_Denis_sig_WTCCCT1D --recode A  --out  GWAS_catalog_2018_and_Denis_sig_WTCCCT1D
+# plink -bfile your_genotype_bed_file --recode A --out individual_genotype_table
 
 
 
@@ -15,10 +15,10 @@
 import numpy as np
 import pandas as pd
 
-#Denis_total_SNPs_significant_eqtls02042019_sorted.txt is a mapping file created from the Supplementary Table 4 of the T1D manuscript
-#Denis_total_SNPs_significant_eqtls02042019_sorted.txt is a mapping table of tissue specific eQTL-effects. It has four columns (Tissue, SNP, Gene_Name, Effect_Size)
-#Denis_total_SNPs_significant_eqtls02042019_sorted.txt is created from the significant tissue specific SNP-gene eQTL data from CodEs3D
-TSG_list = pd.read_table('data/Denis_total_SNPs_significant_eqtls02042019_sorted.txt')
+#Tissue_SNP_Gene_mapping.txt is a mapping file created from the Supplementary Table 4 of the T1D manuscript
+#Tissue_SNP_Gene_mapping.txt is a mapping table of tissue specific eQTL-effects. It has four columns (Tissue, SNP, Gene_Name, Effect_Size)
+#Tissue_SNP_Gene_mapping.txt is created from the significant tissue specific SNP-gene eQTL data from CodEs3D
+TSG_list = pd.read_table('data/Tissue_SNP_Gene_mapping.txt')
 
 #individual_genotype_table.raw is created from your plink bed genotype data (README.md)
 eQTL_table = pd.read_table('data/individual_genotype_table.raw',sep = " ")
