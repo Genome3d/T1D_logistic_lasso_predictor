@@ -80,8 +80,10 @@ y_pred = clf.predict_proba(X_sel)[:,1]
 # This in-sample AUC should be better than your the AUCs from your repeated cross-validation
 auc = roc_auc_score(Y, y_pred)
 
-#AUC results from the 50 predictors saved in .npy format
-np.save("data/AUC_results_distribution_c1max500l1m0.2_5fold.npy", AUC_result)
+#AUC results from the 50 predictors 
+AUC_out = pd.DataFrame(AUC_result, columns=['AUC'])
+AUC_out.to_csv("data/AUC_results_distribution_c1max500l1m0.2_5fold.txt", sep='\t',index=False, line_terminator='\n')
+
 AUC_std= st.stdev(AUC_result)
 AUC_mean= st.mean(AUC_result)
 
