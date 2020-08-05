@@ -1,4 +1,5 @@
-# python script for bayesian estimation supersedes the t test from pymc3 for AUC difference analysis 
+# python script for bayesian estimation supersedes the t test from pymc3 
+# for AUC difference analysis of 50 predictor models 'Lung--rs3087243_A--CTLA4' or 'Testis--rs3087243_A--CTLA4'
 
 
 import numpy as np
@@ -19,12 +20,12 @@ y = y_diff
 
 #plt.show()
 
-µ_m = np.mean(y)
-µ_s = np.std(y) * 2
+Âµ_m = np.mean(y)
+Âµ_s = np.std(y) * 2
 
 
 with pm.Model() as model:
-    group1_mean = pm.Normal('group1_mean', mu=µ_m, sd=µ_s)
+    group1_mean = pm.Normal('group1_mean', mu=Âµ_m, sd=Âµ_s)
    
 	
 s_low = 0
