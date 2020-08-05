@@ -30,6 +30,8 @@ tmp_SNP_w_list = SNP_w_list.copy()
 TSG_cols = []
 drop_SNPs = []
 
+
+# check the T1D SNPs if they are in the mapping table. If Yes, mutiple (weight) them with their tissue specific eQTL effect sizes from GTEx. 
 for rsSNP_w in tmp_SNP_w_list :
 	rsSNP = rsSNP_w.split('_')[0]
 	tmp_TSGs = list ( TSG_list.Tissue[TSG_list.SNP == rsSNP] + "--" + rsSNP_w + "--" + TSG_list.Gene_Name[TSG_list.SNP == rsSNP])
