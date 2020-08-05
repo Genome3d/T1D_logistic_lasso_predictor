@@ -9,7 +9,7 @@
 
 
 #--------------------------------------------------------------------------------------
-# python program for creating the Tissue specific eQTL expression table for new corrected Denis_total_SNPs_sig_eQTL_effects 
+# python program for creating the T1D tissue specific eQTL table "Weighted_eQTL_matrix.txt" from your own genotype data
 #
 
 import numpy as np
@@ -49,8 +49,8 @@ for rsSNP_w in drop_SNPs:
 	
 TSG_col_sorted = sorted(TSG_cols)
 new_eQTL_table = tmp_eQTL_table[samples_header + TSG_col_sorted + SNP_w_list]
-new_eQTL_table.to_csv('data/Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019_v2.txt', sep='\t', index=False)
-# Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019.txt is the individual tissue specific eQTL effect table (referring to the Supplementary Table 5 of the T1D manuscript)
+new_eQTL_table.to_csv('data/Weighted_eQTL_matrix.txt', sep='\t', index=False)
+# Weighted_eQTL_matrix.txt is the individual tissue specific eQTL effect table (referring to the Supplementary Table 5 of the T1D manuscript)
 
 
 #--------------------------------------------------------------------------------------
