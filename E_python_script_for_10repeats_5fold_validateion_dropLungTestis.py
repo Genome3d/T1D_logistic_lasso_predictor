@@ -1,5 +1,6 @@
 
 ## Use RepeatedKFold to do 10 x 5 fold validation of the T1D logistic lasso regression models with removing 'Lung--rs3087243_A--CTLA4' or 'Testis--rs3087243_A--CTLA4'
+# The script was used to create the Supplementary Table 12 in the T1D manuscript
 
 import numpy as np
 import pandas as pd
@@ -113,7 +114,7 @@ auc_dt = roc_auc_score(Y, y_pred_dt)
 
 
 
-
+# AUC results from the 50 predictors without 'Lung--rs3087243_A--CTLA4' or 'Testis--rs3087243_A--CTLA4'
 AUC_out = pd.DataFrame(AUC_result_dl, columns=['AUC'])
 AUC_out.to_csv("AUC_results_50modeldropLung.txt", sep='\t',index=False, line_terminator='\n')
 AUC_out = pd.DataFrame(AUC_result_dt, columns=['AUC'])
@@ -128,6 +129,7 @@ num_coef_dl = np.sum(clf_dl.coef_[0,:] != 0)
 num_coef_dt = np.sum(clf_dt.coef_[0,:] != 0)
 
 
+#Performance results from the grid search algorithm
 f= open("Man0.2_onTrianBest_fullmax500_50modelsdropLungTestis.txt","w+")
 
 f.write('Man0.2_onTrianBest_fullmax500_50models_dropLungTestis\n')
