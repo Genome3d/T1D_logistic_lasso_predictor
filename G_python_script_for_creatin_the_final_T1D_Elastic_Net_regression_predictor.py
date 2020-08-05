@@ -1,5 +1,5 @@
 
-# To create the final T1D logistic lasso regression predictor with the full set of tissue specific eQTL effect matrix
+# To create the final T1D logistic lasso regression predictor with the full the tissue specific eQTL effect matrix
 
 import numpy as np
 import pandas as pd
@@ -38,6 +38,8 @@ lg_clf = LogisticRegression(random_state=1, solver='saga',n_jobs=-1, penalty='el
 grid_clf = GridSearchCV(lg_clf, parameters, scoring='roc_auc', n_jobs=-1,iid=False, cv=10)
 grid_clf.fit(X,Y)
 
+
+# The final T1D predictor performance
 f= open("sk_grid_lg_0.2_onTrain_saga_c1l1max500_full_modelb_26092019.txt","w+")
 
 f.write('sk_grid_lg_0.2_onTrain_saga_c1l1max500_full_modelb_26092019\n')
@@ -67,7 +69,7 @@ f.write('num_coef: ' + str(num_coef) + '\n')
 f.write('\n\n\n')
 
 
-
+# The selected data fields and their model weights in the lasso regression predictor model 
 X_header = np.array(X.columns)
 best_clf =  grid_clf.best_estimator_
 data_array = np.vstack((X_header,best_clf.coef_[0,:]))
