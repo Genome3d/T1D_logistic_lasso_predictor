@@ -67,7 +67,7 @@ for train_index, test_index in rkf.split(X):
 	count = count + 1
 	data_array = np.vstack((X_header,best_clf.coef_[0,:]))
 	model_weights = pd.DataFrame(data=data_array.T,columns=['Data_feature', 'Weight'])
-	m_name = '/nesi/project/uoa02723/Mann_sklearn/Mann_on_training/results_5foldx10/sk_grid_lg_0.2_onTrain_5fold' + str(count) + 'weights.txt'
+	m_name = 'data/sk_grid_lg_0.2_onTrain_5fold' + str(count) + 'weights.txt'
 	model_weights.to_csv(m_name, sep='\t',index=False, line_terminator='\n')
 
 
@@ -80,14 +80,14 @@ y_pred = clf.predict_proba(X_sel)[:,1]
 # This in-sample AUC should be better than your the AUCs from your repeated cross-validation
 auc = roc_auc_score(Y, y_pred)
 
-np.save("/nesi/project/uoa02723/Mann_sklearn/Mann_on_training/results_5foldx10/AUC_results_distribution_c1max500l1m0.2_5fold.npy", AUC_result)
+np.save("data/AUC_results_distribution_c1max500l1m0.2_5fold.npy", AUC_result)
 AUC_std= st.stdev(AUC_result)
 AUC_mean= st.mean(AUC_result)
 
 num_coef = np.sum(clf.coef_[0,:] != 0)
 
 
-f= open("Man0.2_onTrianBest_fullmax500_5foldx10_14112019.txt","w+")
+f= open("data/Man0.2_onTrianBest_fullmax500_5foldx10_14112019.txt","w+")
 
 f.write('Man0.2_onTrianBest_fullmax500_fold5x10_14112019\n')
 
