@@ -2,12 +2,12 @@
 # go to /data to create the new data files by the below two command lines
 
 
-cat std80_Weighted_eQTL_matrix.txt | sed 's/rs2069762_C--36951/rs2069762_C--MARCH1/g' > std80_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019_MARCH1.txt
-cat Weighted_eQTL_matrix.txt | sed 's/rs2069762_C--36951/rs2069762_C--MARCH1/g' > std_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019_MARCH1.txt
+cat std80_Weighted_eQTL_matrix.txt | sed 's/rs2069762_C--36951/rs2069762_C--MARCH1/g' > std80_Weighted_eQTL_matrix_MARCH1.txt
+cat Weighted_eQTL_matrix.txt | sed 's/rs2069762_C--36951/rs2069762_C--MARCH1/g' > std_Weighted_eQTL_matrix_MARCH1.txt
 
 #--------------------------------------------------------------------------------
 
-# Run the following line by python to create finalized_lgl1c1max500ran1T1D_model_2042.sav
+# Run the following lines by python to create finalized_lgl1c1max500ran1T1D_model_2042.sav
 
 
 import numpy as np
@@ -23,12 +23,12 @@ from  tsfresh.feature_selection.relevance import calculate_relevance_table
 # Normal L1 regression 
 
 
-eQTL_table80 = pd.read_table('data/std80_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019_MARCH1.txt')
+eQTL_table80 = pd.read_table('data/Weighted_eQTL_matrix_MARCH1.txt')
 x_features = eQTL_table80[eQTL_table80.columns[6:]]
 y_phenotype = eQTL_table80['PHENOTYPE'] - 1
 X_selected0_1 = select_features(x_features, y_phenotype,test_for_binary_target_real_feature='mann', test_for_real_target_binary_feature='mann', fdr_level=0.2 )
 
-eQTL_table100 = pd.read_table('data/std_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019_MARCH1.txt')
+eQTL_table100 = pd.read_table('data/std_Weighted_eQTL_matrix_MARCH1.txt')
 x_table100 = eQTL_table100[X_selected0_1.columns]
 
 y_table100 = eQTL_table100['PHENOTYPE'] - 1
