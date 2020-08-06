@@ -6,7 +6,7 @@ tsfresh                   0.12.0
 pymc3                     3.8
 
 unzip all the zip files under data/ before running any python scripts. 
-Some regquired data may not be available. Please double check before running the python scripts.
+Some required data may not be available. Please double check before running the python scripts.
 
 This folder contains 7 python scripts for creating and validating the T1D lasso regression preditor developed from our study. The scripts should be run by python directly as 7 sequential steps. All the required files are location in data/ directory. The python_scripts_of_T1D_manuscript/ diectory contains all the text files of commands used for developing the predictor models. They are only used for references. The python_scripts_of_T1D_manuscript/UKBiobank_Test_data/ directory contains the information and scripts for the T1D lasso regression predictor model validation with the UKBio bank derived test data. 
 
@@ -14,7 +14,7 @@ For using the default files at data/, your should start with B_python_script_spl
 
 You can start with running A_python_script_for_creating_WTCCC_T1D_weighted_matrix.py (optional):
 
-For running A_python_script_for_creating_WTCCC_T1D_weighted_matrix.py to create a individual tissue specific eQTL effect table, it is required to have your own individual genetype data in plink bed format with three files (bed,fam,bin) to be converted to a .raw text file. The pink command is as the following:
+For running A_python_script_for_creating_WTCCC_T1D_weighted_matrix.py to create a individual tissue specific eQTL effect table, it is required to have your own individual genetype data contain T1D GWAS SNPs in plink bed format with three files (bed,fam,bin) to be converted to a .raw text file. The pink command is as the following:
 
 plink -bfile your_genotype_bed_file --recode A  --out individual_genotype_table
 
