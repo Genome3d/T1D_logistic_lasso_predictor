@@ -2,8 +2,8 @@
 # go to /data to create the new data files by the below two command lines
 
 
-cat std80_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019_v2.txt | sed 's/rs2069762_C--36951/rs2069762_C--MARCH1/g' > std80_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019_MARCH1.txt
-cat Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019_v2.txt | sed 's/rs2069762_C--36951/rs2069762_C--MARCH1/g' > std_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019_MARCH1.txt
+cat std80_Weighted_eQTL_matrix.txt | sed 's/rs2069762_C--36951/rs2069762_C--MARCH1/g' > std80_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019_MARCH1.txt
+cat Weighted_eQTL_matrix.txt | sed 's/rs2069762_C--36951/rs2069762_C--MARCH1/g' > std_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019_MARCH1.txt
 
 #--------------------------------------------------------------------------------
 
