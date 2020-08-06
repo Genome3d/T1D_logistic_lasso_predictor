@@ -1,6 +1,7 @@
 
 # To apply mann whitney u test from tsfresh to filter out data features > FDR 0.2 on the 80% individual tissue specific eQTL effect table (the Supplementary table 5)
 # Use GridSearchCV to search the optimized hyperparameter for the T1D logistic predictor model
+# Sklearn Machine Learning algorithms are used to create T1D predictive models from the individual tissue specific eQTL effect table
 
 import numpy as np
 import pandas as pd
