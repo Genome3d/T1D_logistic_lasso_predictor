@@ -70,6 +70,7 @@ f.write('\n\n\n')
 
 
 # The selected data fields and their model weights in the lasso regression predictor model 
+# The model weights estimated by the final predictor are the contributions of the eQTL or SNP effects to T1D predictions 
 X_header = np.array(X.columns)
 best_clf =  grid_clf.best_estimator_
 data_array = np.vstack((X_header,best_clf.coef_[0,:]))
