@@ -26,7 +26,7 @@ selected_std_full = eQTL_table[full_columns]
 
 
 eQTL_table80 = selected_std_full
-temp20 = pd.read_table('data/std20_eQTL_table02042019_selected_by_Fdr0.2_mann_onTrain.txt')
+temp20 = pd.read_table('data/std20_Denis_total_Gwas_cat_Denis_2017_all_combined_eQTL_table02042019.txt')
 
 eQTL_table20 = temp20[full_columns]
 
