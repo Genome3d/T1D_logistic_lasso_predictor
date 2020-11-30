@@ -6,9 +6,11 @@
 # The full tissue specific eQTL table
 
 # Outputs: sk_grid_lg_0.2_onTrain_50model_dropLung + str(count) + weights.txt where count = 1 to 50,  sk_grid_lg_0.2_onTrain_50model_dropTesis + str(count) + weights.txt where count 1 to 50
-# 	   Man0.2_onTrianBest_fullmax500_50modelsdropLungTestis.txt 
+# 	   AUC_results_50modeldropLung.txt, AUC_results_50modeldropTestis.txt, Man0.2_onTrianBest_fullmax500_50modelsdropLungTestis.txt 
 # sk_grid_lg_0.2_onTrain_50model_dropLung + str(count) + weights.txt contains the model components and wights for each randomized predictor without eQTL Lung--rs3087243_A--CTLA4
 # sk_grid_lg_0.2_onTrain_50model_dropTesis + str(count) + weights.txt contains the model components and wights for each randomized predictor without eQTL Testis--rs3087243_A--CTLA4
+# AUC_results_50modeldropLung.txt contains AUC results from the 50 predictors without 'Lung--rs3087243_A--CTLA4'
+# AUC_results_50modeldropTestis.txt contains AUC results from the 50 predictors without 'Testis--rs3087243_A--CTLA4'
 # Man0.2_onTrianBest_fullmax500_50modelsdropLungTestis.txt contains the performance results for the randomized predictor models
 
 import numpy as np
