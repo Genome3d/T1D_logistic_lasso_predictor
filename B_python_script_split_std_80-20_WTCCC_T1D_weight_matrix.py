@@ -1,5 +1,7 @@
 # Split the tissue specific eQTL matrix into two files (80% and 20%)
 # Weighted_eQTL_matrix.txt is the individual tissue specific eQTL effect table matrix with 4893 individual samples (the Supplementary Table 5)
+# Inputs: Weighted_eQTL_matrix.txt
+# Outpits: std80_Weighted_eQTL_matrix.txt, std20_Weighted_eQTL_matrix.txt
 
 
 import numpy as np
