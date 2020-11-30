@@ -1,5 +1,12 @@
 
 # Use RepeatedKFold to do 10 x 5 fold validation of the T1D logistic lasso regression model
+# Inputs: Weighted_eQTL_matrix.txt
+# The full tissue specific eQTL table
+
+# Outputs: Man0.2_onTrianBest_fullmax500_5foldx10_14112019.txt, sk_grid_lg_0.2_onTrain_5fold{count}weights.txt where count = 1 to 50, AUC_results_distribution_c1max500l1m0.2_5fold.txt
+# sk_grid_lg_0.2_onTrain_5fold{count}weights.txt contains the model components and their weights for each randomized model
+# AUC_results_distribution_c1max500l1m0.2_5fold.txt contains the AUC results for the 50 randomized predictors
+# Man0.2_onTrianBest_fullmax500_5foldx10_14112019.txt contains the performance results for the 50 randomized predictors
 
 import numpy as np
 import pandas as pd
@@ -89,7 +96,7 @@ AUC_mean= st.mean(AUC_result)
 
 num_coef = np.sum(clf.coef_[0,:] != 0)
 
-#Performance results from the grid search algorithm
+#Performance results for the randomized predictors
 f= open("data/Man0.2_onTrianBest_fullmax500_5foldx10_14112019.txt","w+")
 
 f.write('Man0.2_onTrianBest_fullmax500_fold5x10_14112019\n')
