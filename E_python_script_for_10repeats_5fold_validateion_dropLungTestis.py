@@ -2,6 +2,15 @@
 ## Use RepeatedKFold to do 10 x 5 fold validation of the T1D logistic lasso regression models with removing 'Lung--rs3087243_A--CTLA4' or 'Testis--rs3087243_A--CTLA4'
 # The script was used to create the Supplementary Table 12 in the T1D manuscript
 
+# Inputs: Weighted_eQTL_matrix.txt
+# The full tissue specific eQTL table
+
+# Outputs: sk_grid_lg_0.2_onTrain_50model_dropLung + str(count) + weights.txt where count = 1 to 50,  sk_grid_lg_0.2_onTrain_50model_dropTesis + str(count) + weights.txt where count 1 to 50
+# 	   Man0.2_onTrianBest_fullmax500_50modelsdropLungTestis.txt 
+# sk_grid_lg_0.2_onTrain_50model_dropLung + str(count) + weights.txt contains the model components and wights for each randomized predictor without eQTL Lung--rs3087243_A--CTLA4
+# sk_grid_lg_0.2_onTrain_50model_dropTesis + str(count) + weights.txt contains the model components and wights for each randomized predictor without eQTL Testis--rs3087243_A--CTLA4
+# Man0.2_onTrianBest_fullmax500_50modelsdropLungTestis.txt contains the performance results for the randomized predictor models
+
 import numpy as np
 import pandas as pd
 import statistics as st
@@ -129,7 +138,7 @@ num_coef_dl = np.sum(clf_dl.coef_[0,:] != 0)
 num_coef_dt = np.sum(clf_dt.coef_[0,:] != 0)
 
 
-#Performance results from the grid search algorithm
+#Performance results for the randomized predictors
 f= open("Man0.2_onTrianBest_fullmax500_50modelsdropLungTestis.txt","w+")
 
 f.write('Man0.2_onTrianBest_fullmax500_50models_dropLungTestis\n')
