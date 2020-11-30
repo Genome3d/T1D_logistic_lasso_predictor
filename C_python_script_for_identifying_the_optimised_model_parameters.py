@@ -2,6 +2,13 @@
 # To apply mann whitney u test from tsfresh to filter out data features > FDR 0.2 on the 80% individual tissue specific eQTL effect table (the Supplementary table 5)
 # Use GridSearchCV to search the optimized hyperparameter for the T1D logistic predictor model
 # Sklearn Machine Learning algorithms are used to create T1D predictive models from the individual tissue specific eQTL effect table
+# Inputs: std80_Weighted_eQTL_matrix.txt, std20_Weighted_eQTL_matrix.txt
+# The 80% and 20% individual tissue specific eQTL effect tables
+
+# Outputs: sk_grid_lg_0.2_onTrain_saga_elnet2_20092019.txt, sk_grid_lg_0.2_onTrain_saga_elnet2_20092019weights.txt
+# sk_grid_lg_0.2_onTrain_saga_elnet2_20092019.txt : Predictor performance information
+# sk_grid_lg_0.2_onTrain_saga_elnet2_20092019weights.txt : Predictor model components and their wight information
+
 
 import numpy as np
 import pandas as pd
@@ -47,6 +54,7 @@ grid_clf = GridSearchCV(lg_clf, parameters, scoring='roc_auc', n_jobs=-1,iid=Fal
 grid_clf.fit(X,Y)
 
 f= open("sk_grid_lg_0.2_onTrain_saga_elnet2_20092019.txt","w+")
+#sk_grid_lg_0.2_onTrain_saga_elnet2_20092019.txt contains the predictor performance information
 
 f.write('sk_grid_lg_0.2_onTrain_saga_elnet2_20092019\n')
 f.write('grid_clf.best_score_: ' + str(grid_clf.best_score_) + '\n')
@@ -82,6 +90,6 @@ best_clf =  grid_clf.best_estimator_
 data_array = np.vstack((X_header,best_clf.coef_[0,:]))
 model_weights = pd.DataFrame(data=data_array.T,columns=['Data_feature', 'Weight'])
 model_weights.to_csv('data/sk_grid_lg_0.2_onTrain_saga_elnet2_20092019weights.txt', sep='\t',index=False,line_terminator='\n')
-#sk_grid_lg_0.2_onTrain_saga_elnet2_20092019weights.txt contains the results of the best predictor model from sklearn grid search algorithm
+#sk_grid_lg_0.2_onTrain_saga_elnet2_20092019weights.txt contains the components and their weights of the best predictor model from sklearn grid search algorithm
 
 
