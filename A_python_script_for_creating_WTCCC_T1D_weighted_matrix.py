@@ -2,7 +2,7 @@
 #
 # Assume your_genotype_bed_file is your plink genotype data contain T1D GWAS SNPs only
 # your_genotype_bed_file is in plink bed format with three files (bed,fam,bin)
-# It needs to be converted to a text table format (.raw)
+# They need to be converted to a text table format (.raw)
 
 # plink -bfile your_genotype_bed_file --recode A --out individual_genotype_table
 
@@ -11,6 +11,8 @@
 #--------------------------------------------------------------------------------------
 # python program for creating the T1D tissue specific eQTL table "Weighted_eQTL_matrix.txt" from your own genotype data
 #
+# Inputs: Tissue_SNP_Gene_mapping.txt, individual_genotype_table.raw
+# Outputs: Weighted_eQTL_matrix.txt
 
 import numpy as np
 import pandas as pd
