@@ -1,5 +1,11 @@
 
 # To create the final T1D logistic lasso regression predictor with the full the tissue specific eQTL effect matrix
+# Inputs: std80_Weighted_eQTL_matrix.txt,Weighted_eQTL_matrix.txt
+# The 80% and full eQTL tissue specific tables
+
+# Outputs: sk_grid_lg_0.2_onTrain_saga_c1l1max500_full_modelb_26092019.txt, sk_grid_lg_0.2_onTrain_saga_c1l1max500_full_modelb_26092019weights.txt
+# sk_grid_lg_0.2_onTrain_saga_c1l1max500_full_modelb_26092019.txt contains the prefermance information for the final predictor model created from the full eQTL dataset.
+# sk_grid_lg_0.2_onTrain_saga_c1l1max500_full_modelb_26092019weights.txt contains the model components and weights of the final model.
 
 import numpy as np
 import pandas as pd
