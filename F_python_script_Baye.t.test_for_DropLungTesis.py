@@ -1,5 +1,10 @@
 # python script for bayesian estimation supersedes the t test from pymc3 
 # for AUC difference analysis of 50 predictor models 'Lung--rs3087243_A--CTLA4' or 'Testis--rs3087243_A--CTLA4'
+# Inputs: AUC_results_50modeldropTestis.txt, AUC_results_50modeldropLung.txt
+# AUC_results_50modeldropTestis.txt contains teh AUC results from the randomized predictor models without eQTL Testis--rs3087243_A--CTLA4
+# AUC_results_50modeldropLung.txt contains teh AUC results from the randomized predictor models without eQTL Lung--rs3087243_A--CTLA4
+
+# Outputs: plot results from bayesian estimation supersedes the t test
 
 
 import numpy as np
