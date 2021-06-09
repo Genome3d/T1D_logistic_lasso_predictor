@@ -62,7 +62,7 @@ f.write('grid_clf.best_estimator_: ' + str(grid_clf.best_estimator_) + '\n')
 f.write('grid_clf.best_params_: ' + str(grid_clf.best_params_) + '\n')
 f.write('grid_clf.scorer_: ' + str(grid_clf.scorer_) + '\n')
 f.write('grid_clf.best_score_: ' + str(grid_clf.best_score_) + '\n')
-f.write('grid_clf.best_score_: ' + str(grid_clf.best_score_) + '\n')
+
 
 lg_clf_best_grid = grid_clf.best_estimator_
 
