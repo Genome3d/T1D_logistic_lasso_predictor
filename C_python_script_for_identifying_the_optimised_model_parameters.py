@@ -7,7 +7,7 @@
 
 # Outputs: sk_grid_lg_0.2_onTrain_saga_elnet2_20092019.txt, sk_grid_lg_0.2_onTrain_saga_elnet2_20092019weights.txt
 # sk_grid_lg_0.2_onTrain_saga_elnet2_20092019.txt : Predictor performance information
-# sk_grid_lg_0.2_onTrain_saga_elnet2_20092019weights.txt : Predictor model components and their wight information
+# sk_grid_lg_0.2_onTrain_saga_elnet2_20092019weights.txt : Predictor model components and their weight information
 
 
 import numpy as np
