@@ -1,6 +1,6 @@
 # create a genotype table
 #
-# Assume your_genotype_bed_file is your plink genotype data contain T1D GWAS SNPs only
+# Assume your_genotype_bed_file is your plink genotype data contain the T1D GWAS 313 SNPs in this study only
 # your_genotype_bed_file is in plink bed format with three files (bed,fam,bin)
 # They need to be converted to a text table format (.raw)
 
